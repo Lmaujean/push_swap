@@ -9,6 +9,6 @@ int main(int argc, char **argv)
     j = 0;
     i = 0;
     if (argc < 2 || ft_stringisdigit(argc, argv) || ft_strissolong(argc, argv))
-        printf("%s\n", "Error");
+       ft_putstr_fd("Error\n", 1);
     return (0);
 }

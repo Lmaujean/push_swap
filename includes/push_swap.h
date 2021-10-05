@@ -13,11 +13,15 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "../libft/libft.h"
 #include <unistd.h>
 #include <limits.h>
+#include <stdio.h>
 
-int    ft_stringisdigit(int ac, char **av);
-int    ft_strissolong(int ac, char **av);
+int			ft_stringisdigit(int ac, char **av);
+int			ft_strissolong(int ac, char **av);
+long long	ft_atoi(const char *nptr);
+int			ft_isdigit(int c);
+void        ft_putstr_fd(char *s, int fd);
+size_t      ft_strlen(const char *s);
 
 #endif

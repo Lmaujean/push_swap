@@ -15,7 +15,9 @@ CC=gcc
 CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 
-SRC =	./srcs/main.c
+SRC =	./srcs/main.c\
+		./srcs/error.c\
+		./srcs/utils.c\
 
 BONUS = 
 
@@ -28,8 +30,6 @@ OBJBONUS = $(OBJ) $(BNS)
 INC = ./inc/
 
 $(NAME): $(OBJ)
-				make bonus -C ./libft/
-				cp libft/libft.a $(NAME)
 				ar -rcs $(NAME) $(OBJ)
 				gcc $(CFLAGS) ./srcs/main.c push_swap.a -o push_swap
 
@@ -47,7 +47,6 @@ fclean: clean
 			
 reset: clean
 				$(RM) $(NAME)
-				make fclean -C ./libft
 
 re: fclean all
 

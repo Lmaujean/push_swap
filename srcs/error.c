@@ -11,13 +11,6 @@
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
 int    ft_stringisdigit(int ac, char **av)
 {
     int i;
@@ -40,23 +33,18 @@ int    ft_stringisdigit(int ac, char **av)
 
 int     ft_strissolong(int ac, char **av)
 {
-    int i;
-    int j;
+	long long value;
+	int j;
+	int i;
 
-    j = 1;
-    while (j < ac)
-    {
-        i = 0;
-        while (av[j][i])
-        {
-            while (i)
-            {
-                if (i > INT_MAX || i < INT_MIN)
-                    return (1);
-            }
-            i++;
-        }
-        j++;
-    }
-    return (0);
+	j = 1;
+	i = 0;
+	value = ft_atoi(&av[j][i]);
+	while (j < ac)
+	{
+		if (value < INT_MIN || value > INT_MAX)
+			return (1);
+		j++;
+	}
+	return (0);
 }

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME=push_swap.a
+NAME=push_swap
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
@@ -18,6 +18,7 @@ RM=rm -f
 SRC =	./srcs/main.c\
 		./srcs/error.c\
 		./srcs/utils.c\
+		./srcs/utils2.c\
 
 BONUS = 
 
@@ -31,13 +32,13 @@ INC = ./inc/
 
 $(NAME): $(OBJ)
 				ar -rcs $(NAME) $(OBJ)
-				gcc $(CFLAGS) ./srcs/main.c push_swap.a -o push_swap
+				gcc $(CFLAGS) ./srcs/main.c push_swap -o push_swap
 
 %.o: %.c
 				$(CC) $(CFLAGS) -I. -o $@ -c $?
 
 all: $(NAME)
-	$(RM) push_swap.a
+
 clean:
 				$(RM) $(OBJ) $(OBJBONUS)
 

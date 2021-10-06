@@ -11,60 +11,60 @@
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-int    ft_stringisdigit(char *av)
+int    ft_stringisdigit(char *tab)
 {
     int i;
 
     i = 0;
-	if (av[0] == '-' && ft_strlen(av) >= 2)
+	if (tab[0] == '-' && ft_strlen(tab) >= 2)
 		i++;
-    while (av[i])
+    while (tab[i])
     {
-        if (!ft_isdigit(av[i]))
+        if (!ft_isdigit(tab[i]))
 			return (1);
         i++;
     }
     return (0);
 }
 
-int     ft_strissolong(char *av)
+int     ft_strissolong(char *tab)
 {
 	long long value;
 
-	value = ft_atoi(av);
-	if (ft_strlen(av) > 11)
+	value = ft_atoi(tab);
+	if (ft_strlen(tab) > 11)
 		return (1);
 	if (value < INT_MIN || value > INT_MAX)
 		return (1);
 	return (0);
 }
 
-int		ft_isdoublon(int ac, char **av)
+int		ft_isdoublon(int ac, char **tab)
 {
 	int i;
 
 	i = 0;
 	while (i < ac)
 	{
-		if (ft_atoi(av[i]) == ft_atoi(av[ac]))
+		if (ft_atoi(tab[i]) == ft_atoi(tab[ac]))
 			return (1);
 		i++;
 	}
 	return (0);
 }
 	
-int		ft_pars(char **av)
+int		ft_pars(char **tab)
 {
 	int i;
 
 	i = 0;
-	while (av[i])
+	while (tab[i])
 	{
-		if (ft_stringisdigit(av[i]))
+		if (ft_stringisdigit(tab[i]))
 			return (1);
-		if (ft_strissolong(av[i]))
+		if (ft_strissolong(tab[i]))
 			return (1);
-		if (ft_isdoublon(i, av))
+		if (ft_isdoublon(i, tab))
 			return (1);
 		i++;
 	}

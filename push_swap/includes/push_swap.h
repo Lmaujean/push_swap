@@ -19,6 +19,26 @@
 #include <limits.h>
 #include <stdio.h>
 
+typedef struct  s_list
+{
+    int         value;
+    struct s_list *next;
+    struct s_list *back;
+}               t_list;
+
+typedef struct  s_stack
+{
+    int         len;
+    struct s_list *start;
+    struct s_list *end;
+}               t_stack;
+
+typedef struct  s_push
+{
+    t_stack stack_a;
+    t_stack stack_b;
+}               t_push;
+
 int			ft_stringisdigit(char *tab);
 int			ft_strissolong(char *tab);
 long long	ft_atoi(const char *nptr);
@@ -28,5 +48,6 @@ size_t      ft_strlen(const char *s);
 int	        ft_isdoublon(int ac, char **tab);
 int		    ft_pars(char **tab);
 char	    **ft_split(char *s, char c);
+//void        check_error(char **lst);
 
 #endif

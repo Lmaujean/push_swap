@@ -10,44 +10,38 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME=push_swap
-CC=gcc
-CFLAGS=-Wall -Wextra -Werror
-RM=rm -f
+NAME = push_swap
+
+CC= gcc
+
+CFLAGS= -Wall -Wextra -Werror
+
+RM= rm -f
 
 SRC =	./srcs/main.c\
 		./srcs/error.c\
 		./srcs/utils.c\
 		./srcs/utils2.c\
 
-BONUS = 
-
 OBJ = $(SRC:.c=.o)
 
-BNS = $(BONUS:.c=.o)
-
-OBJBONUS = $(OBJ) $(BNS)
-
-INC = ./inc/
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-				ar -rcs $(NAME) $(OBJ)
-				gcc $(CFLAGS) ./srcs/main.c push_swap -o push_swap
-
-%.o: %.c
-				$(CC) $(CFLAGS) -I. -o $@ -c $?
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 all: $(NAME)
 
 clean:
-				$(RM) $(OBJ) $(OBJBONUS)
+	$(RM) $(OBJ)
 
 fclean: clean
-				$(RM) $(NAME)
-				$(RM) push_swap
+	$(RM) $(OBJ)
+	$(RM) $(NAME)
 			
 reset: clean
-				$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

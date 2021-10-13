@@ -28,14 +28,17 @@ int     ft_strissolong(char *tab)
 	return (0);
 }
 
-int		ft_isdoublon(int ac, char **tab)
+int		ft_isdoublon(char *tab)
 {
 	int i;
+	int ac;
 
 	i = 0;
+	ac = 0;
 	while (i < ac)
 	{
-		if (ft_atoi(tab[i]) == ft_atoi(tab[ac]))
+		printf("coucou\n");
+		if (ft_atoi(&tab[i]) == ft_atoi(&tab[ac]))
 			return (1);
 		i++;
 	}
@@ -53,7 +56,7 @@ int		ft_pars(char **tab)
 			return (1);
 		if (ft_strissolong(tab[i]))
 			return (1);
-		if (ft_isdoublon(i, tab))
+		if (ft_isdoublon(tab[i]))
 			return (1);
 		i++;
 	}

@@ -45,9 +45,8 @@ long long	ft_atoi(const char *nptr);
 int			ft_isdigit(int c);
 void        ft_putstr_fd(char *s, int fd);
 size_t      ft_strlen(const char *s);
-int	        ft_isdoublon(int ac, char **tab);
+int	        ft_isdoublon(char *tab);
 int		    ft_pars(char **tab);
 char	    **ft_split(char *s, char c);
-//void        check_error(char **lst);
 
 #endif

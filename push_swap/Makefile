@@ -14,22 +14,31 @@ NAME = push_swap
 
 CC= gcc
 
-CFLAGS= -Wall -Wextra -Werror
+#CFLAGS= -Wall -Wextra -Werror
 
 RM= rm -f
 
-SRC =	./srcs/main.c\
-		./srcs/error.c\
+SRC =	./srcs/main_test.c\
+		./srcs/swap_stack.c\
+		./srcs/push_stack.c\
+		./srcs/reverse_stack.c\
+		./srcs/rotate_stack.c\
 		./srcs/utils.c\
 		./srcs/utils2.c\
 
 OBJ = $(SRC:.c=.o)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -c $< -o $@
+
+#%.o: %.c
+#	$(CC) $(CFLAGS) -c $< -o $@
+
+#$(NAME): $(OBJ)
+#	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME)
 
 all: $(NAME)
 

@@ -1,5 +1,12 @@
 #include "../includes/push_swap.h"
 
+int	ft_stack_empty(t_stack *stack)
+{
+	if (!stack)
+		return (1);
+	return (0);
+}
+
 t_list		*ft_new_dlist(int content)
 {
 	t_list *new_dlist;
@@ -32,7 +39,7 @@ t_stack		*ft_stack_addback(t_stack *stack, int content)
 {
 	t_list *list;
 
-    if (!stack)
+    if (ft_stack_empty(stack))
     {
 		stack = ft_new_stack(content);
 		return (stack);
@@ -50,7 +57,7 @@ t_stack		*ft_stack_addfront(t_stack *stack, int content)
 {
 	t_list	*list;
 
-	if (!stack)
+	if (ft_stack_empty(stack))
 	{
 		stack = ft_new_stack(content);
 		return (stack);
@@ -68,7 +75,7 @@ t_stack		*ft_stack_delback(t_stack *stack)
 {
 	t_list	*temp;
 
-	if (!stack)
+	if (ft_stack_empty(stack))
 		return (NULL);
 	if (stack->start == stack->end)
 	{
@@ -91,7 +98,7 @@ t_stack		*ft_stack_delfront(t_stack	*stack)
 {
 	t_list *temp;
 
-	if (!stack)
+	if (ft_stack_empty(stack))
 		return (NULL);
 	if (stack->start == stack->end)
 	{
@@ -120,9 +127,9 @@ t_stack		*ft_clear_stack(t_stack *stack)
 
 void	print_list(t_stack *stack)
 {
-	t_list *tmp;\
+	t_list *tmp;
 
-	if (!stack)
+	if (ft_stack_empty(stack))
 	{
 		printf("La stack est vide\n");
 		return;
@@ -140,7 +147,7 @@ int		ft_reverse_stack(t_stack *stack)
 	t_list 	*temp;
 	int			cpy;
 
-	if (!stack)
+	if (ft_stack_empty(stack))
 		return (1);
 	if (stack->start == stack->end)
 		return (1);
@@ -162,7 +169,7 @@ int		ft_rotate_stack(t_stack *stack)
 	t_list	*temp;
 	int		cpy;
 
-	if (!stack)
+	if (ft_stack_empty(stack))
 		return (1);
 	if (stack->start == stack->end)
 		return (1);
@@ -186,7 +193,7 @@ int	ft_swap_stack(t_stack *stack)
 	int first;
 	int	second;
 
-	if (!stack)
+	if (ft_stack_empty(stack))
 		return (1);
 	if (stack->start == stack->end)
 		return (1);
@@ -201,29 +208,68 @@ int	ft_swap_stack(t_stack *stack)
 	return (0);
 }
 
+int		ft_push_stack(t_stack **dest, t_stack **src)
+{
+	if (ft_stack_empty(*src))
+		return (1);
+	*dest = ft_stack_addfront(*dest, (*src)->start->value);
+	(*dest)->start->value = (*src)->start->value;
+	*src = ft_stack_delfront(*src);
+	return (0);
+}
+
+void	ft_swap(int *a, int *b)
+{
+	int temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
 int main()
 {
-    t_stack *stack;
+	t_stack	*stack_a;
+	//t_stack	*stack_b;
 
-	stack = ft_new_stack(96561);
-	stack = ft_stack_addback(stack, 2565);
-	stack = ft_stack_addback(stack, 3);
-	stack = ft_stack_addback(stack, 4);
-	stack = ft_stack_addback(stack, 5);
-	stack = ft_stack_addback(stack, 6);
-	stack = ft_stack_addback(stack, 7);
-	stack = ft_stack_addback(stack, 8);
-	stack = ft_stack_addback(stack, 9);
-	stack = ft_stack_addback(stack, 10);
-	stack = ft_stack_addback(stack, 11);
-	stack = ft_stack_addback(stack, 12);
-	stack = ft_stack_addback(stack, 13);
-	print_list(stack);
+	 //stack_b = ft_new_stack(2);
+	// stack_a = ft_stack_addfront(stack_a, 56);
+	// stack_a = ft_stack_addfront(stack_a, 96);
+	// stack_a = ft_stack_addfront(stack_a, 236);
+	// print_list(stack_a);
+	// print_list(stack_b);
+	// printf("j'ai push ma stack a dans la b\n");
+	// ft_push_stack(&stack_b, &stack_a);
+	// ft_push_stack(&stack_b, &stack_a);
+	// ft_push_stack(&stack_b, &stack_a);
+	// ft_push_stack(&stack_b, &stack_a);
+	// printf("stack_a\n");
+	// print_list(stack_a);
+	// printf("stack_b\n");
+	// print_list(stack_b);
+	stack_a = ft_new_stack(1);
+	stack_a = ft_stack_addback(stack_a, 2);
+	stack_a = ft_stack_addback(stack_a, 3);
+	stack_a = ft_stack_addback(stack_a, 4);
+	stack_a = ft_stack_addback(stack_a, 5);
+	stack_a = ft_stack_addback(stack_a, 6);
+	stack_a = ft_stack_addback(stack_a, 7);
+	stack_a = ft_stack_addback(stack_a, 8);
+	stack_a = ft_stack_addback(stack_a, 9);
+	stack_a = ft_stack_addback(stack_a, 10);
+	stack_a = ft_stack_addback(stack_a, 11);
+	stack_a = ft_stack_addback(stack_a, 12);
+	stack_a = ft_stack_addback(stack_a, 13);
+	print_list(stack_a);
 	printf("first print\n");
-	ft_swap_stack(stack);
-	print_list(stack);
+	ft_swap_stack(stack_a);
+	print_list(stack_a);
 	printf("quatrieme print\n");
-	ft_swap_stack(stack);
-	print_list(stack);
+	printf("J'ai effectué mon 1er move\n");
+	ft_sa(stack_a);
+	printf("J'ai effectué mon 2eme move\n");
+	ft_rra(stack_a);
+	ft_swap_stack(stack_a);
+	print_list(stack_a);
 	return 0;
 }

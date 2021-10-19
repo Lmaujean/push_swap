@@ -19,12 +19,16 @@
 #include <limits.h>
 #include <stdio.h>
 
+/**************************** STRUCTURE DE LISTE  ************************************/
+
 typedef struct  s_list
 {
     int         value;
     struct s_list *next;
     struct s_list *back;
 }               t_list;
+
+/**************************** STRUCTURE DE CONTROLE  ************************************/
 
 typedef struct  s_stack
 {
@@ -33,11 +37,18 @@ typedef struct  s_stack
     struct s_list *end;
 }               t_stack;
 
+/**************************** STRUCTURE DE PUSH_STACK  ************************************/
+
 typedef struct  s_push
 {
+    int     minus;
+    int     middle;
+    int     max;
     t_stack stack_a;
     t_stack stack_b;
 }               t_push;
+
+/**************************** FONCTION DE PRINT_MOVE  ************************************/
 
 void    ft_sa(t_push *push);
 void    ft_sb(t_push *push);
@@ -56,7 +67,7 @@ void    ft_pb(t_push *push);
 t_list		*ft_new_dlist(int content);
 t_stack		*ft_new_stack(int content);
 
-/**************************** FONCTION DE RAJOUT OU SUPP  ************************************/
+/**************************** FONCTION DE RAJOUT OU SUPP DANS MA STACK  ******************/
 
 t_stack		*ft_stack_addback(t_stack *stack, int content);
 t_stack		*ft_stack_addfront(t_stack *stack, int content);
@@ -68,11 +79,12 @@ t_stack		*ft_stack_delfront(t_stack	*stack);
 int		ft_reverse_stack(t_stack *stack);
 int		ft_rotate_stack(t_stack *stack);
 int	    ft_swap_stack(t_stack *stack);
-int		ft_push_stack(t_stack **dest, t_stack **src);
+int		ft_push_stack(t_stack *dest, t_stack *src);
 
 /**************************** FONCTION DE L'ALGO  ************************************/
 
 void ft_swap(int *a, int *b);
+void	ft_sort_3(t_push *a);
 
 /**************************** FONCTION DU PARSING  ************************************/
 

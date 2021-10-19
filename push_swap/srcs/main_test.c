@@ -227,48 +227,44 @@ void	ft_swap(int *a, int *b)
 	*b = temp;
 }
 
-void	ft_sort_3(t_push *a)
+int		ft_stack_is_sort(t_stack *stack)
 {
-	t_stack *stack;
+	t_list *temp;
 
-	a->minus = stack->start->value;
-	a->middle = stack->start->next->value;
-	a->max = stack->end->value;
-	if (a->minus == 3 && a->middle == 2 && a->max == 1)
+	if (ft_stack_empty(stack))
+		return (-1) ;
+	temp = stack->start;
+	while (temp->next != NULL)
 	{
-		ft_rra(a);
-		printf("coucou\n");
-	}	
-	if (a->minus == 2 && a->middle == 3 && a->max == 1)
-	{
-		ft_sa(a);
-		ft_rra(a);
+		if (temp->next->value < temp->value)
+			return (1);
+		temp = temp->next;
 	}
-	if (a->minus == 1 && a->middle == 3 && a->max == 2)
+	return (0);
+}
+
+void	ft_sort_3(t_push *push)
+{	
+	while (ft_stack_is_sort(push->stack_a))
 	{
-		ft_rra(a);
-		ft_sa(a);
+		if (push->stack_a->start->value > push->stack_a->start->next->value &&\
+			push->stack_a->start->value < push->stack_a->end->value)
+			ft_sa(push);
+		else
+			ft_rra(push);
 	}
-	if (a->minus == 2 && a->middle == 1 && a->max == 3)
-		ft_sa(a);
-	if (a->minus == 3 && a->middle == 1 && a->max == 2)
-	{
-		ft_rra(a);
-		ft_sa(a);
-	}
-	if (a->minus == 1 && a->middle == 2 && a->max == 3)
-		return ;
 }
 
 int main()
 {
-	t_stack	*stack_a;
+	t_push *push;
+	int error;
 	//t_stack	*stack_b;
-
-	 //stack_b = ft_new_stack(2);
-	// stack_a = ft_stack_addfront(stack_a, 56);
-	// stack_a = ft_stack_addfront(stack_a, 96);
-	// stack_a = ft_stack_addfront(stack_a, 236);
+	push = malloc(sizeof(*push));
+	push->stack_a = ft_new_stack(235);
+	push->stack_a = ft_stack_addback(push->stack_a, 258);
+	push->stack_a = ft_stack_addback(push->stack_a, 242);
+	//push->stack_a = ft_stack_addfront(push->stack_a, 236);
 	// print_list(stack_a);
 	// print_list(stack_b);
 	// printf("j'ai push ma stack a dans la b\n");
@@ -280,9 +276,9 @@ int main()
 	// print_list(stack_a);
 	// printf("stack_b\n");
 	// print_list(stack_b);
-	stack_a = ft_new_stack(3);
-	stack_a = ft_stack_addback(stack_a, 2);
-	stack_a = ft_stack_addback(stack_a, 1);
+	//stack_a = ft_new_stack(3);
+	//stack_a = ft_stack_addback(stack_a, 2);
+	//stack_a = ft_stack_addback(stack_a, 1);
 	// stack_a = ft_stack_addback(stack_a, 4);
 	// stack_a = ft_stack_addback(stack_a, 5);
 	// stack_a = ft_stack_addback(stack_a, 6);
@@ -293,17 +289,28 @@ int main()
 	// stack_a = ft_stack_addback(stack_a, 11);
 	// stack_a = ft_stack_addback(stack_a, 12);
 	// stack_a = ft_stack_addback(stack_a, 13);
-	// print_list(stack_a);
-	// printf("first print\n");
-	// ft_swap_stack(stack_a);
-	// print_list(stack_a);
-	// printf("quatrieme print\n");
-	// printf("J'ai effectué mon 1er move\n");
-	// ft_sa(stack_a);
-	// printf("J'ai effectué mon 2eme move\n");
-	// ft_rra(stack_a);
-	// ft_swap_stack(stack_a);
-	// print_list(stack_a);
-	ft_sort_3(stack_a);
+	 //print_list(push->stack_a);
+	//  printf("first print\n");
+	//  //ft_swap_stack(push->stack_a);
+	//  print_list(push->stack_a);
+	//  //printf("quatrieme print\n");
+	//  printf("J'ai effectué mon 1er move\n");
+	//  ft_sa(push);
+	//  print_list(push->stack_a);
+	//  printf("J'ai effectué mon 2eme move\n");
+	//  ft_rra(push);
+	// print_list(push->stack_a);
+	 //ft_swap_stack(stack_a);
+	// error = ft_stack_is_sort(push->stack_a);
+	// if (error == 1)
+	// 	printf("la stack est pas trié\n");
+	// else if (error == -1)
+	// 	printf("ma stack vaut NULL\n");
+	// else
+	// 	printf("la stack est trié\n");
+	
+	print_list(push->stack_a);
+	ft_sort_3(push);
+	print_list(push->stack_a);
 	return 0;
 }

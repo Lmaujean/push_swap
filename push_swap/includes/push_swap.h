@@ -44,8 +44,8 @@ typedef struct  s_push
     int     minus;
     int     middle;
     int     max;
-    t_stack stack_a;
-    t_stack stack_b;
+    t_stack *stack_a;
+    t_stack *stack_b;
 }               t_push;
 
 /**************************** FONCTION DE PRINT_MOVE  ************************************/

@@ -79,7 +79,7 @@ t_stack		*ft_stack_delfront(t_stack	*stack);
 int		ft_reverse_stack(t_stack *stack);
 int		ft_rotate_stack(t_stack *stack);
 int	    ft_swap_stack(t_stack *stack);
-int		ft_push_stack(t_stack *dest, t_stack *src);
+int		ft_push_stack(t_stack **dest, t_stack **src);
 
 /**************************** FONCTION DE L'ALGO  ************************************/
 

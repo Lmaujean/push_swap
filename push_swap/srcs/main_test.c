@@ -51,6 +51,7 @@ t_stack		*ft_stack_addback(t_stack *stack, int content)
 	stack->end->next = list;
 	list->back = stack->end;
 	stack->end = list;
+	stack->len++;
 	return (stack);
 }
 
@@ -69,6 +70,7 @@ t_stack		*ft_stack_addfront(t_stack *stack, int content)
 	stack->start->back = list;
 	list->next = stack->start;
 	stack->start = list;
+	stack->len++;
 	return (stack);
 }
 
@@ -235,7 +237,6 @@ int		ft_stack_is_sort(t_stack *stack)
 	
 	if (ft_stack_empty(stack))
 		return (-1) ;
-		
 	temp = stack->start;
 	while (temp->next != NULL)
 	{
@@ -250,42 +251,65 @@ void	ft_sort_3(t_push *push)
 {	
 	while (ft_stack_is_sort(push->stack_a))
 	{
-		if (push->stack_a->start->value > push->stack_a->start->next->value &&\
-			push->stack_a->start->value < push->stack_a->end->value)
-			ft_sa(push);
-		else
-			ft_rra(push);
+			if (push->stack_a->start->value > push->stack_a->start->next->value &&\
+				push->stack_a->start->value < push->stack_a->end->value)
+				ft_sa(push);
+			else
+				ft_rra(push);		
 	}
+}
+
+int		ft_get_index_min(t_stack *stack)
+{
+	int index;
+	int next_value;
+	int value;
+	int pos;
+	t_list *tmp;
+
+	index = 1;
+	pos = 1;
+	value = stack->start->value;
+	tmp = stack->start;
+	while (tmp)
+	{
+		if (tmp->next)
+		{
+			next_value = tmp->next->value;
+			if (value > next_value)
+			{
+				value = next_value;
+				index = pos + 1;
+			}
+		}
+		tmp = tmp->next;
+		pos++;
+	}
+	return (index);
 }
 
 void	ft_sort_5(t_push *push)
 {
+	int min_pos;
+
+	min_pos = ft_get_index_min(push->stack_a);
 	while (ft_stack_is_sort(push->stack_a))
 	{
-		printf("ma bite numero 1\n");
-		push->stack_a->len = 5;
-		while (push->stack_a->len > 3)
-		{
-			//printf("ma bite\n");
-			ft_pa(push);
-			push->stack_a->len--;
-		}
+		if (min_pos != push->stack_a->start->value)
+			ft_ra(push);
 	}
 }
 
 int main()
 {
 	t_push *push;
+	//int error;
 	push->stack_a = malloc(sizeof(*push->stack_a));
-	push->stack_a = ft_new_stack(235);
-	push->stack_a = ft_stack_addback(push->stack_a, 258);
-	push->stack_a->len++;
-	push->stack_a = ft_stack_addback(push->stack_a, 242);
-	push->stack_a->len++;
-	push->stack_a = ft_stack_addback(push->stack_a, 236);
-	push->stack_a->len++;
-	push->stack_a = ft_stack_addback(push->stack_a, 2359);
-	push->stack_a->len++;
+	push->stack_a = ft_new_stack(12);
+	push->stack_a = ft_stack_addback(push->stack_a, 4);
+	push->stack_a = ft_stack_addback(push->stack_a, 8);
+	push->stack_a = ft_stack_addback(push->stack_a, 2);
+	push->stack_a = ft_stack_addback(push->stack_a, 1);
 	// print_list(stack_a);
 	// print_list(stack_b);
 	// printf("j'ai push ma stack a dans la b\n");
@@ -314,14 +338,20 @@ int main()
 	//  printf("first print\n");
 	printf("stack_a\n");
 	print_list(push->stack_a);
-	printf("la valeur de len est ====> [%d]\n", push->stack_a->len);
 	printf("stack_b\n");
 	print_list(push->stack_b);
+	//printf("mon index est la ====> [%d]\n", ft_get_index_min(push->stack_a));
 	ft_sort_5(push);
 	printf("stack_a\n");
 	print_list(push->stack_a);
 	printf("stack_b\n");
 	print_list(push->stack_b);
+	// printf("mon start de b est ======> [%d]\n", push->stack_b->start->value);
+	//ft_sort_5(push);
+	//printf("stack_a\n");
+	//print_list(push->stack_a);
+	//printf("stack_b\n");
+	//print_list(push->stack_b);
 	//  print_list(push->stack_a);
 	//  //printf("quatrieme print\n");
 	//  printf("J'ai effectué mon 1er move\n");
@@ -331,13 +361,13 @@ int main()
 	//  ft_rra(push);
 	// print_list(push->stack_a);
 	 //ft_swap_stack(stack_a);
-	// error = ft_stack_is_sort(push->stack_a);
-	// if (error == 1)
-	// 	printf("la stack est pas trié\n");
-	// else if (error == -1)
-	// 	printf("ma stack vaut NULL\n");
-	// else
-	// 	printf("la stack est trié\n");
-	//ft_sort_3(push);
+// 	error = ft_stack_is_sort(push->stack_a);
+// 	if (error == 1)
+// 	 	printf("la stack est pas trié\n");
+// 	 else if (error == -1)
+// 	 	printf("ma stack vaut NULL\n");
+// 	 else
+// 	 	printf("la stack est trié\n");
+// 	ft_sort_3(push);
 	return 0;
 }

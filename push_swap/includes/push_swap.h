@@ -41,9 +41,6 @@ typedef struct  s_stack
 
 typedef struct  s_push
 {
-    int     minus;
-    int     middle;
-    int     max;
     t_stack *stack_a;
     t_stack *stack_b;
 }               t_push;
@@ -84,7 +81,7 @@ int		ft_push_stack(t_stack **dest, t_stack **src);
 /**************************** FONCTION DE L'ALGO  ************************************/
 
 void ft_swap(int *a, int *b);
-void	ft_sort_3(t_push *a);
+int 	ft_sort_3(t_push *a);
 
 /**************************** FONCTION DU PARSING  ************************************/
 

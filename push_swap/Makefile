@@ -29,7 +29,7 @@ SRC =	./srcs/main_test.c\
 OBJ = $(SRC:.c=.o)
 
 %.o: %.c
-	$(CC) -c $< -o $@
+	$(CC) -c -g $< -o $@
 
 #%.o: %.c
 #	$(CC) $(CFLAGS) -c $< -o $@

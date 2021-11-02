@@ -80,8 +80,21 @@ int		ft_push_stack(t_stack **dest, t_stack **src);
 
 /**************************** FONCTION DE L'ALGO  ************************************/
 
-void ft_swap(int *a, int *b);
+int		ft_size_stack(t_stack * stack);
+int		ft_stack_is_sort(t_stack *stack);
+int		ft_get_index_min(t_stack *stack);
+t_push	*ft_init_stack(t_push *push);
 int 	ft_sort_3(t_push *a);
+void	ft_sort_5(t_push *push);
+void    ft_move(t_push *push);
+void	ft_sort(t_push *push);
+
+//void ft_swap(int *a, int *b);
+
+
+/**************************** FONCTION DE NETTOYAGE  ************************************/
+
+t_push	*ft_clear_push(t_push *push);
 
 /**************************** FONCTION DU PARSING  ************************************/
 
@@ -91,7 +104,7 @@ long long	ft_atoi(const char *nptr);
 int			ft_isdigit(int c);
 void        ft_putstr_fd(char *s, int fd);
 size_t      ft_strlen(const char *s);
-int	        ft_isdoublon(char *tab);
+int	        ft_isdoublon(t_stack *stack);
 int		    ft_pars(char **tab);
 char	    **ft_split(char *s, char c);
 

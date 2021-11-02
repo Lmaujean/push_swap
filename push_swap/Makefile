@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC= gcc
 
-#CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror #-fsanitize=address
 
 RM= rm -f
 
@@ -29,16 +29,10 @@ SRC =	./srcs/main_test.c\
 OBJ = $(SRC:.c=.o)
 
 %.o: %.c
-	$(CC) -c -g $< -o $@
-
-#%.o: %.c
-#	$(CC) $(CFLAGS) -c $< -o $@
-
-#$(NAME): $(OBJ)
-#	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 all: $(NAME)
 

@@ -175,14 +175,13 @@ int		ft_rotate_stack(t_stack *stack)
 	stack->start = temp->next;
 	stack->end->next = temp;
 	stack->end = temp;
+	stack->start->back = NULL;
 	stack->end->next = NULL;
 	return (0);
 }
 
 int	ft_swap_stack(t_stack *stack)
 {
-	t_list	*temp;
-	int value;
 	int first;
 	int	second;
 
@@ -190,8 +189,6 @@ int	ft_swap_stack(t_stack *stack)
 		return (1);
 	if (stack->start == stack->end)
 		return (1);
-	temp = NULL;
-	value = 0;
 	first = stack->start->value;
 	second = stack->start->next->value;
 	stack = ft_stack_delfront(stack);
@@ -277,7 +274,9 @@ int	ft_sort_3(t_push *push)
 			ft_rra(push);
 	}
 	return (0);
-}			
+}
+
+
 
 int		ft_get_index_min(t_stack *stack)
 {
@@ -308,24 +307,22 @@ int		ft_get_index_min(t_stack *stack)
 	return (index);
 }
 
+void	ft_sort_5(t_push *push)
+{
+	ft_pb(push);
+	ft_pb(push);
+	ft_sort_3(push);
+}
+
 void	ft_sort(t_push *push)
 {
 	if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 2)
 	 	ft_sa(push);
-	if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 3)
+	else if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 3)
 		ft_sort_3(push);
+	else if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 5)
+		ft_sort_5(push);	
 }
-
-// void	ft_sort_5(t_push *push)
-// {
-// 	size_t stack_size;
-
-// 	stack_size = ft_stack_is_sort(push->stack_a);
-// 	if (stack_size)
-// 	{
-// 		if
-// 	}
-// }
 
 int main()
 {
@@ -333,8 +330,10 @@ int main()
 	//int error;
 	push = malloc(sizeof(t_push) * 1);
 	push->stack_a = malloc(sizeof(push->stack_a));
-	push->stack_a = ft_new_stack(3);
-	push->stack_a = ft_stack_addback(push->stack_a, 1);
+	push->stack_a = ft_new_stack(4);
+	push->stack_a = ft_stack_addback(push->stack_a, 6);
+	push->stack_a = ft_stack_addback(push->stack_a, 8);
+	push->stack_a = ft_stack_addback(push->stack_a, 66);
 	push->stack_a = ft_stack_addback(push->stack_a, 2);
 	// print_list(stack_a);
 	// print_list(stack_b);
@@ -370,7 +369,7 @@ int main()
 	printf("stack_a\n");
 	print_list(push->stack_a);
 	printf("stack_b\n");
-	//print_list(push->stack_b);
+	print_list(push->stack_b);
 	// printf("mon start de b est ======> [%d]\n", push->stack_b->start->value);
 	//ft_sort_5(push);
 	//printf("stack_a\n");

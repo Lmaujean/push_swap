@@ -283,13 +283,11 @@ int	ft_sort_3(t_push *push)
 
 int		ft_get_index_min(t_stack *stack)
 {
-	int index;
 	int next_value;
 	int value;
 	int pos;
 	t_list *tmp;
 
-	index = 1;
 	pos = 1;
 	value = stack->start->value;
 	tmp = stack->start;
@@ -301,7 +299,6 @@ int		ft_get_index_min(t_stack *stack)
 			if (value > next_value)
 			{
 				value = next_value;
-				index = pos + 1;
 			}
 		}
 		tmp = tmp->next;
@@ -322,6 +319,13 @@ void ft_move(t_push *push)
 	ft_pb(push);
 }
 
+void	ft_sort_4(t_push *push)
+{
+	ft_move(push);
+	ft_sort_3(push);
+	ft_pa(push);
+}
+
 void	ft_sort_5(t_push *push)
 {
 	ft_move(push);
@@ -337,6 +341,8 @@ void	ft_sort(t_push *push)
 	 	ft_sa(push);
 	if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 3)
 		ft_sort_3(push);
+	if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 4)
+		ft_sort_4(push);
 	if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 5)
 		ft_sort_5(push);
 }
@@ -349,90 +355,13 @@ t_push	*ft_init_stack(t_push *push)
 	return (push);
 }
 
-// t_push	*ft_clear_push(t_push *push)
-// {
-// 	while (push->stack_a)
-// 		push->stack_a = ft_stack_delback(push->stack_a);
-// 	while (push->stack_b)
-// 		push->stack_b = ft_stack_delback(push->stack_b);
-// 	push = NULL;
-// 	return (push);
-// }
-
-int main()
+t_push	*ft_clear_push(t_push *push)
 {
-	t_push *push;
-	//int error;
+	while (push->stack_a)
+		push->stack_a = ft_stack_delback(push->stack_a);
+	while (push->stack_b)
+		push->stack_b = ft_stack_delback(push->stack_b);
+	free(push);
 	push = NULL;
-	push = ft_init_stack(push);
-	// push = malloc(sizeof(t_push) * 1);
-	// push->stack_a = malloc(sizeof(*push->stack_a));
-	// push->stack_b = malloc(sizeof(*push->stack_b));
-	//push->stack_b = ft_new_stack(0);
-	push->stack_a = ft_new_stack(2);
-	push->stack_a = ft_stack_addback(push->stack_a, 1);
-	push->stack_a = ft_stack_addback(push->stack_a, 47);
-	push->stack_a = ft_stack_addback(push->stack_a, 9);
-	push->stack_a = ft_stack_addback(push->stack_a, 98);
-	// print_list(stack_a);
-	// print_list(stack_b);
-	// printf("j'ai push ma stack a dans la b\n");
-	// ft_push_stack(&stack_b, &stack_a);
-	// ft_push_stack(&stack_b, &stack_a);
-	// ft_push_stack(&stack_b, &stack_a);
-	// ft_push_stack(&stack_b, &stack_a);
-	// printf("stack_a\n");
-	// print_list(stack_a);
-	// printf("stack_b\n");
-	// print_list(stack_b);
-	//stack_a = ft_new_stack(3);
-	//stack_a = ft_stack_addback(stack_a, 2);
-	//stack_a = ft_stack_addback(stack_a, 1);
-	// stack_a = ft_stack_addback(stack_a, 4);
-	// stack_a = ft_stack_addback(stack_a, 5);
-	// stack_a = ft_stack_addback(stack_a, 6);
-	// stack_a = ft_stack_addback(stack_a, 7);
-	// stack_a = ft_stack_addback(stack_a, 8);
-	// stack_a = ft_stack_addback(stack_a, 9);
-	// stack_a = ft_stack_addback(stack_a, 10);
-	// stack_a = ft_stack_addback(stack_a, 11);
-	// stack_a = ft_stack_addback(stack_a, 12);
-	// stack_a = ft_stack_addback(stack_a, 13);
-	 //print_list(push->stack_a);
-	//  printf("first print\n");
-	printf("mon index est ====> [%d]\n", ft_get_index_min(push->stack_a));
-	printf("la taille de ma stack est ====> [%d]\n", ft_size_stack(push->stack_a));
-	printf("stack_a\n");
-	print_list(push->stack_a);
-	ft_sort(push);
-	printf("stack_a\n");
-	print_list(push->stack_a);
-	printf("stack_b\n");
-	print_list(push->stack_b);
-	//printf("mon start de b est ======> [%d]\n", push->stack_b->start->value);
-	//ft_sort_5(push);
-	//printf("stack_a\n");
-	//print_list(push->stack_a);
-	//printf("stack_b\n");
-	//print_list(push->stack_b);
-	//  print_list(push->stack_a);
-	//  //printf("quatrieme print\n");
-	//  printf("J'ai effectué mon 1er move\n");
-	//  ft_sa(push);
-	//  print_list(push->stack_a);
-	//  printf("J'ai effectué mon 2eme move\n");
-	//  ft_rra(push);
-	// print_list(push->stack_a);
-	 //ft_swap_stack(stack_a);
-// 	error = ft_stack_is_sort(push->stack_a);
-// 	if (error == 1)
-// 	 	printf("la stack est pas trié\n");
-// 	 else if (error == -1)
-// 	 	printf("ma stack vaut NULL\n");
-// 	 else
-// 	 	printf("la stack est trié\n");
-// 	ft_sort_3(push);
-	//ft_clear_push(push);
-	
-	return 0;
+	return (push);
 }

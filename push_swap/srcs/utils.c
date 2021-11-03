@@ -37,12 +37,6 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (s)
-		write(fd, s, ft_strlen(s));
-}
-
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -51,4 +45,10 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (s)
+		write(fd, s, ft_strlen(s));
 }

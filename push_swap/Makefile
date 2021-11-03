@@ -14,11 +14,13 @@ NAME = push_swap
 
 CC= gcc
 
-CFLAGS= -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS= -Wall -Wextra -Werror  #-fsanitize=address
 
 RM= rm -f
 
-SRC =	./srcs/main_test.c\
+SRC =	./srcs/main.c\
+		./srcs/fonction_algo.c\
+		./srcs/error.c\
 		./srcs/swap_stack.c\
 		./srcs/push_stack.c\
 		./srcs/reverse_stack.c\

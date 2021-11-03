@@ -86,3 +86,23 @@ char	**ft_split(char *s, char c)
 	}
 	return (kherz);
 }
+
+char	*ft_strdup(const char *s1)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	str = ft_calloc(sizeof(char), i + 1);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	return (str);
+}

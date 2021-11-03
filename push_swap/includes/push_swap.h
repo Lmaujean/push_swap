@@ -88,6 +88,7 @@ int 	ft_sort_3(t_push *a);
 void	ft_sort_5(t_push *push);
 void    ft_move(t_push *push);
 void	ft_sort(t_push *push);
+void	print_list(t_stack *stack);
 
 //void ft_swap(int *a, int *b);
 
@@ -95,6 +96,7 @@ void	ft_sort(t_push *push);
 /**************************** FONCTION DE NETTOYAGE  ************************************/
 
 t_push	*ft_clear_push(t_push *push);
+void    ft_free(char **ptr);
 
 /**************************** FONCTION DU PARSING  ************************************/
 
@@ -104,8 +106,11 @@ long long	ft_atoi(const char *nptr);
 int			ft_isdigit(int c);
 void        ft_putstr_fd(char *s, int fd);
 size_t      ft_strlen(const char *s);
-int	        ft_isdoublon(t_stack *stack);
+int		    ft_isdoublon(char **ret);
 int		    ft_pars(char **tab);
 char	    **ft_split(char *s, char c);
+char	    *ft_strdup(const char *s1);
+t_stack		*ft_stock_arg_in_stack(char **argv);
+
 
 #endif

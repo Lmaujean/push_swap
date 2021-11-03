@@ -28,41 +28,40 @@ int     ft_strissolong(char *tab)
 	return (0);
 }
 
-int		ft_isdoublon(t_stack *stack)
+int		ft_isdoublon(char **ret)
 {
-	t_list *i;
-	t_list *temp;
+	int 		 i;
+	int 		 j;
 
-	i = stack->start;
-	while (i != NULL)
+	i = 0;
+	while (ret[i])
 	{
-		temp = i->next;
-		if (temp == NULL)
+		j = 0;
+		while (j < i)
 		{
-			if (temp->value < i->value)
+			if (ft_atoi(ret[i]) == ft_atoi(ret[j]))
 				return (1);
+			j++;
 		}
-		i = i->next;
+		i++;
 	}
 	return (0);
 }
 	
-int		ft_pars(char **tab)
+int		ft_pars(char **argv)
 {
 	int i;
-	t_push *push;
 
-	push = NULL;
 	i = 0;
-	while (tab[i])
+	while (argv[i])
 	{
-		if (ft_stringisdigit(tab[i]))
+		if (ft_stringisdigit(argv[i]))
 			return (1);
-		if (ft_strissolong(tab[i]))
-			return (1);
-		if (ft_isdoublon(push->stack_a))
+		if (ft_strissolong(argv[i]))
 			return (1);
 		i++;
 	}
+	if (ft_isdoublon(argv))
+		return (1);
 	return (0);
 }

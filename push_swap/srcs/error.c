@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaujean <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/04 12:56:07 by lmaujean          #+#    #+#             */
+/*   Updated: 2021/11/04 12:56:12 by lmaujean         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-int    ft_stringisdigit(char *tab)
+int	ft_stringisdigit(char *tab)
 {
-    int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	if (tab[0] == '-' && ft_strlen(tab) >= 2)
 		i++;
-    while (tab[i])
-    {
-        if (!ft_isdigit(tab[i]))
+	while (tab[i])
+	{
+		if (!ft_isdigit(tab[i]))
 			return (1);
-        i++;
-    }
-    return (0);
+		i++;
+	}
+	return (0);
 }
 
-int     ft_strissolong(char *tab)
+int	ft_strissolong(char *tab)
 {
-	long long value;
+	long long	value;
 
 	value = ft_atoi(tab);
 	if (ft_strlen(tab) > 11)
@@ -28,10 +40,10 @@ int     ft_strissolong(char *tab)
 	return (0);
 }
 
-int		ft_isdoublon(char **ret)
+int	ft_isdoublon(char **ret)
 {
-	int 		 i;
-	int 		 j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (ret[i])
@@ -47,10 +59,10 @@ int		ft_isdoublon(char **ret)
 	}
 	return (0);
 }
-	
-int		ft_pars(char **argv)
+
+int	ft_pars(char **argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (argv[i])

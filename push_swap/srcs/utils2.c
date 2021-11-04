@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmaujean <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/04 13:50:25 by lmaujean          #+#    #+#             */
+/*   Updated: 2021/11/04 13:50:26 by lmaujean         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-static void     *ft_calloc(size_t count, size_t size)
+static void	*ft_calloc(size_t count, size_t size)
 {
 	char	*str;
 	size_t	i;

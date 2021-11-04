@@ -89,9 +89,7 @@ void	ft_sort_5(t_push *push);
 void    ft_move(t_push *push);
 void	ft_sort(t_push *push);
 void	print_list(t_stack *stack);
-
-//void ft_swap(int *a, int *b);
-
+int	    ft_stack_empty(t_stack *stack);
 
 /**************************** FONCTION DE NETTOYAGE  ************************************/
 

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_stack.c                                       :+:      :+:    :+:   */
+/*   stack_init_clear.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaujean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 13:19:26 by lmaujean          #+#    #+#             */
-/*   Updated: 2021/11/04 13:19:28 by lmaujean         ###   ########.fr       */
+/*   Created: 2021/11/04 12:42:36 by lmaujean          #+#    #+#             */
+/*   Updated: 2021/11/04 12:42:38 by lmaujean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../includes/push_swap.h"
 
-void	ft_pa(t_push *push)
+t_push	*ft_init_stack(t_push *push)
 {
-	if (!ft_push_stack(&push->stack_a, &push->stack_b))
-		ft_putstr_fd("pa\n", 1);
+	push = malloc(sizeof(*push));
+	push->stack_a = NULL;
+	push->stack_b = NULL;
+	return (push);
 }
 
-void	ft_pb(t_push *push)
+t_push	*ft_clear_push(t_push *push)
 {
-	if (!ft_push_stack(&push->stack_b, &push->stack_a))
-		ft_putstr_fd("pb\n", 1);
+	while (push->stack_a)
+		push->stack_a = ft_stack_delfront(push->stack_a);
+	while (push->stack_b)
+		push->stack_b = ft_stack_delfront(push->stack_b);
+	free(push);
+	push = NULL;
+	return (push);
 }

@@ -6,7 +6,7 @@
 #    By: lmaujean <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/29 14:05:04 by lmaujean          #+#    #+#              #
-#    Updated: 2021/09/29 14:05:07 by lmaujean         ###   ########.fr        #
+#    Updated: 2021/11/08 15:01:10 by lmaujean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ CFLAGS= -Wall -Wextra -Werror  #-fsanitize=address
 RM= rm -f
 
 SRC =	./srcs/main.c\
+		./srcs/utils_algo2.c\
+		./srcs/chunks.c\
 		./srcs/stack_init_clear.c\
 		./srcs/fonction_qui_faut_delete_a_la_fin.c\
 		./srcs/move_in_stack.c\

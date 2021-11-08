@@ -94,12 +94,14 @@ int	main(int argc, char **argv)
 		if (!ft_pars(ret))
 		{
 			//printf("debug print stack\n");
+			
 			push->stack_a = ft_stock_arg_in_stack(ret);
 			ft_sort(push);
-			//print_list(push->stack_a);
+			print_list(push->stack_a);
 		}
 		else
 			ft_putstr_fd("ERROR_PARSING_ARGUMENTS\n", 1);
+		printf("mon index max est la [%d]\n", ft_get_index_max(push->stack_a));
 	}
 	ft_free(ret);
 	ft_clear_push(push);

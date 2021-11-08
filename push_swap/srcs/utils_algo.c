@@ -79,3 +79,29 @@ int	ft_get_index_min(t_stack *stack)
 	}
 	return (value);
 }
+
+int	ft_get_index_max(t_stack *stack)
+{
+	int		next_value;
+	int		value;
+	int		pos;
+	t_list	*tmp;
+
+	pos = 1;
+	value = stack->start->value;
+	tmp = stack->start;
+	while (tmp)
+	{
+		if (tmp->next)
+		{
+			next_value = tmp->next->value;
+			if (value < next_value)
+			{
+				value = next_value;
+			}
+		}
+		tmp = tmp->next;
+		pos++;
+	}
+	return (value);
+}

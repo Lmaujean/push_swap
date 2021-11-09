@@ -89,19 +89,23 @@ int	main(int argc, char **argv)
 	if (ret != NULL)
 	{
 		//printf("debug print ret\n");
-		// while (ret[i])
+		//while (ret[i])
 		//     printf("dans ret il y a ça ====> %s\n", ret[i++]);
 		if (!ft_pars(ret))
 		{
-			//printf("debug print stack\n");
+		//printf("debug print stack\n");
 			
 			push->stack_a = ft_stock_arg_in_stack(ret);
+			//printf("mon index max est la [%d]\n", ft_get_index_max(push->stack_a));
+			//printf("stack a\n");
+			//print_list(push->stack_a);
 			ft_sort(push);
-			print_list(push->stack_a);
+			//printf("stack b\n");
+			//print_list(push->stack_b);
+			//print_list(push->stack_a);
 		}
 		else
-			ft_putstr_fd("ERROR_PARSING_ARGUMENTS\n", 1);
-		printf("mon index max est la [%d]\n", ft_get_index_max(push->stack_a));
+			ft_putstr_fd("ERROR_PARSING_ARGUMENTS\n", 1);	
 	}
 	ft_free(ret);
 	ft_clear_push(push);

@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-void    ft_search_move(t_push *push, size_t n, void (*top)(), void (*bot)())
+void    ft_search_move(t_stack *stack, int n, void (*top)(), void (*bot)())
 {
     void    (*f)();
-    size_t len_stack;
+    int  len_stack;
 
-    len_stack = push->stack_a->len;
+   
+    len_stack = stack->len;
     if (n < (len_stack / 2))
     {
         n = (len_stack - n + 1);
@@ -28,5 +29,34 @@ void    ft_search_move(t_push *push, size_t n, void (*top)(), void (*bot)())
         f = top;        
     }
     while (n--)
-        (*f)(push);  
+        (*f)(stack);  
+}
+
+int ft_get_index(t_stack *stack)
+{
+    t_list *temp;
+    int		save;
+	int		next_data;
+	int 	index;
+	int 	pos;
+
+    temp = stack->start;
+	pos = 1;
+	index = 1;
+	save = temp->value;
+	while (temp)
+	{
+		if (temp->next)
+		{
+            next_data = temp->next->value;
+            if (save < next_data)
+            {
+                save = next_data;
+			    index = pos + 1;
+            }	
+		}
+		temp = temp->next;
+		pos++;
+	}
+	return (index);
 }

@@ -78,5 +78,5 @@ void	ft_sort(t_push *push)
 	if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 5)
 		ft_sort_5(push);
 	if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) > 5)
-		ft_push_chunk_to_b(chunks);
+		ft_medium_sort(push, chunks);
 }

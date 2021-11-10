@@ -15,7 +15,6 @@ void    ft_search_move(t_stack *stack, int n, void (*top)(), void (*bot)())
 {
     void    (*f)();
     int  len_stack;
-
    
     len_stack = stack->len;
     if (n < (len_stack / 2))
@@ -29,7 +28,7 @@ void    ft_search_move(t_stack *stack, int n, void (*top)(), void (*bot)())
         f = top;        
     }
     while (n--)
-        (*f)(stack);  
+        (*f)(stack);
 }
 
 int ft_get_index(t_stack *stack)

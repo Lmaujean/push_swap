@@ -54,14 +54,14 @@ void    ft_choose_index(t_push *push, int ind1, int ind2)
 {
    
     if (ind2 < ind1)
-    {
-        ft_search_move(push->stack_a, ind2, &ft_rb, &ft_rrb);
+    { 
+        ft_search_move(push->stack_a, ind2, &ft_ra, &ft_rra);
         ft_pb(push);
         ft_rb(push);
     }
     else
     {
-        ft_search_move(push->stack_a, ind1, &ft_rb, &ft_rrb);
+        ft_search_move(push->stack_a, ind1, &ft_ra, &ft_rra);
         ft_pb(push);
     }
         
@@ -83,20 +83,6 @@ void    ft_push_back(t_push *push)
     }
 }
 
-// void    ft_best_move(t_push *push)
-// {
-//     int max;
-    
-//     max = ft_get_index(push->stack_b);
-    
-//     while (--max)
-//     { 
-//         ft_rb(push);
-//         //ft_search_move(push->stack_b, max, &ft_ra, &ft_rra);
-//     }
-//     ft_pa(push);
-// }
-
 void    ft_medium_sort(t_push *push, t_chunks *chunks)
 {
     int ind1;
@@ -109,12 +95,13 @@ void    ft_medium_sort(t_push *push, t_chunks *chunks)
     chunks->max = chunks->min + chunks->incr;
     while (ft_size_stack(push->stack_a) > 0)
     {
-        
         next_chunks.min = chunks->min + chunks->incr;
 		next_chunks.max = chunks->max + chunks->incr;
 		ind1 = ft_chunks_index(push->stack_a, chunks);
 		ind2 = ft_chunks_index(push->stack_a, &next_chunks); 
-		ft_choose_index(push, ind1, ind2); 
+        printf("stack_a\n");
+        print_list(push->stack_a);
+		ft_choose_index(push, ind1, ind2);
     }
     if (ft_chunks_end(push->stack_a, chunks))
     {

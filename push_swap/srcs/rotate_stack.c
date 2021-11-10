@@ -14,6 +14,8 @@
 
 void	ft_ra(t_push *push)
 {
+	printf("nique bien ta mere ra\n");
+	print_list(push->stack_b);
 	if (!ft_rotate_stack(push->stack_a))
 		ft_putstr_fd("ra\n", 1);
 }

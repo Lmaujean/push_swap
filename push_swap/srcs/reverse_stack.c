@@ -14,6 +14,11 @@
 
 void	ft_rra(t_push *push)
 {
+	printf("nique bien ta mere rra\n");
+	//printf("stack_a\n");
+	//print_list(push->stack_a);
+	printf("stack_b\n");
+	print_list(push->stack_b);
 	if (!ft_reverse_stack(push->stack_a))
 		ft_putstr_fd("rra\n", 1);
 }

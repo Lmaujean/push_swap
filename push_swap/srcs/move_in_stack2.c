@@ -42,7 +42,7 @@ t_stack	*ft_new_stack(int content)
 int	ft_reverse_stack(t_stack *stack)
 {
 	t_list	*temp;
-
+	
 	if (ft_stack_empty(stack))
 		return (1);
 	if (stack->start == stack->end)

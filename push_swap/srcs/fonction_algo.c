@@ -162,7 +162,7 @@ int		ft_reverse_stack(t_stack *stack)
 	return(0);
 }
 
-int		ft_rotate_stack(t_stack *stack) 
+int		ft_rotate_stack(t_stack *stack)
 {
 	t_list	*temp;
 
@@ -229,7 +229,6 @@ int		ft_size_stack(t_stack * stack)
 		size++;
 		temp = temp->next;
 	}
-	
 	return (size);
 }
 
@@ -337,7 +336,7 @@ void	ft_sort_5(t_push *push)
 
 void	ft_sort(t_push *push)
 {
-	if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 2)
+	if (ft_stack_is_sort(push->stack_a) && push->stack_a->len == 2)
 	 	ft_sa(push);
 	if (ft_stack_is_sort(push->stack_a) && ft_size_stack(push->stack_a) == 3)
 		ft_sort_3(push);
